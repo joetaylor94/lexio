@@ -1,6 +1,7 @@
 # Lexio website
 
-The public website for the Lexio apps, served by GitHub Pages from the `main` branch.
+The public website for the Lexio apps, served at lexiolabs.io by Vercel (project `lexiolabs`), which
+deploys every push to `main`. GitHub Pages still serves the old address.
 
 Each app has its own folder so its addresses never change:
 
