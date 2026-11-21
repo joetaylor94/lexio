@@ -5,8 +5,8 @@
   <rect x="5" y="5" width="144" height="144" rx="34" fill="#FFFBF2"/>
   <g clip-path="url(#c)">
     <g transform="rotate(-8 77 77)">
-      <rect x="25" y="77" width="104" height="43" rx="9" fill="#9DBDF7"/>
-      <rect x="34" y="48" width="101" height="32" rx="7" fill="#FFD45C"/>
+      <rect x="24" y="70" width="104" height="43" rx="9" fill="#9DBDF7"/>
+      <rect x="31" y="41" width="101" height="32" rx="7" fill="#FFD45C"/>
     </g>
     <text x="77" y="108" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="86" fill="#2B2B2B">Lx</text>
   </g>
