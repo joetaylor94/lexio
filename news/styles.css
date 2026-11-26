@@ -34,7 +34,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--ink); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 a:hover { text-decoration-color: var(--red); }
-a:focus-visible, .button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+a:focus-visible, .button:focus-visible, .badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
 .narrow { max-width: 720px; }
@@ -68,6 +68,11 @@ a:focus-visible, .button:focus-visible { outline: 3px solid var(--blue); outline
   font-size: 15px;
 }
 .button.quiet { background: var(--card); }
+/* Apple's own "Download on the App Store" badge. Apple asks for it to be used as drawn: at least
+   40px tall, with clear space around it and nothing added to it. */
+.badge { display: inline-block; flex: none; line-height: 0; border-radius: 10px; }
+.badge img { height: 56px; width: auto; }
+.badge.small img { height: 40px; }
 /* A highlighter stroke behind a word, as on the app's wordmark: it sits under the letters and
    sticks out a little either side without pushing the text along. */
 .mark { position: relative; z-index: 0; white-space: nowrap; }
@@ -93,7 +98,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0; }
 .hero h1 { font-size: clamp(38px, 6vw, 60px); font-weight: 700; letter-spacing: -0.01em; }
 .hero p.lead { font-size: 20px; color: var(--ink-muted); margin: 20px 0 28px; max-width: 30em; }
 .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-.soon { font-size: 14px; color: var(--ink-muted); margin-top: 16px; }
+.hero .actions .more { font-weight: 600; font-size: 15px; padding: 12px 4px; }
 .langs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; padding: 0; list-style: none; }
 .langs li { padding: 6px 14px; border: var(--border) solid var(--ink); border-radius: 999px; background: var(--card); font-weight: 600; font-size: 14px; }
 
@@ -175,6 +180,15 @@ footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
   .nav { gap: 12px; font-size: 13px; flex-wrap: nowrap; }
   .brand { font-size: 17px; gap: 8px; white-space: nowrap; }
   .brand img { width: 34px; height: 34px; }
+  /* On a phone the download button comes straight after the headline, full width, and the header
+     keeps only the logo and its own button (the other links are in the footer). */
+  .top.has-get .nav { display: none; }
+  .hero > div:first-child { display: flex; flex-direction: column; }
+  .hero h1 { font-size: clamp(32px, 9.5vw, 44px); }
+  .hero .actions { order: 1; gap: 8px 16px; margin-top: 22px; }
+  .hero .actions .badge img { height: 64px; }
+  .hero p.lead { order: 2; font-size: 18px; margin: 12px 0 0; }
+  .hero .langs { order: 3; margin-top: 20px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -182,3 +196,31 @@ footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
   .button:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--ink); }
 }
 .hero p.lead strong { color: var(--ink); font-weight: 700; }
+
+/* The page a TikTok link lands on (get/): how to leave TikTok's browser for Safari. */
+.get-page { text-align: center; padding-top: 28px; padding-bottom: 56px; max-width: 480px; }
+.get-page .tile { width: 96px; height: 96px; margin: 0 auto 20px; }
+.get-page h1 { font-size: clamp(28px, 7.6vw, 40px); font-weight: 700; text-wrap: balance; }
+.get-page .why { color: var(--ink-muted); margin: 10px auto 26px; max-width: 20em; }
+.get-page .after { color: var(--ink-muted); font-size: 15px; margin: 24px 0 0; }
+.get-page .after strong { color: var(--ink); }
+.get-page .badge { margin-top: 8px; }
+.point { display: flex; flex-direction: column; align-items: flex-end; margin: -8px -4px 4px 0; font-weight: 700; font-size: 15px; }
+.point svg { width: 84px; height: 84px; }
+.point span { margin-right: 6px; }
+.tap { display: flex; gap: 14px; align-items: flex-start; padding: 18px 16px; margin-top: 16px; text-align: left; }
+.tap .num { flex: none; display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border: var(--border) solid var(--ink); border-radius: 50%; background: var(--yellow); font-weight: 700; }
+.tap > div { flex: 1; min-width: 0; }
+.tap h2 { font-size: 19px; font-weight: 600; margin: 4px 0 12px; text-wrap: balance; }
+.tap h2 b { font-weight: 700; }
+.fake { border: 2px solid var(--ink); border-radius: 12px; background: var(--paper); font-size: 14px; overflow: hidden; }
+.fake.bar { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 12px; font-weight: 600; }
+.fake.bar .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fake .dots { border: 3px solid var(--red); border-radius: 10px; padding: 0 9px 5px; font-weight: 700; letter-spacing: 2px; background: var(--card); }
+.fake.menu div { padding: 10px 14px; color: #6b6b6b; }
+.fake.menu div + div { border-top: 1.5px solid var(--dashed); }
+.fake.menu .pick { background: var(--sand); color: var(--ink); font-weight: 700; border-left: 5px solid var(--yellow); display: flex; justify-content: space-between; }
+@media (prefers-reduced-motion: no-preference) {
+  .point svg { animation: nudge 1.4s ease-in-out infinite; }
+  @keyframes nudge { 50% { transform: translate(4px, -5px); } }
+}

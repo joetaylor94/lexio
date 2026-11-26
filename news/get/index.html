@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Lexio News</title>
+<meta name="description" content="Download Lexio News for iPhone: learn Spanish, French or Italian by reading.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFFBF2">
+<link rel="icon" href="../favicon.png">
+<link rel="apple-touch-icon" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<!-- The link to share on TikTok (lexiolabs.io/get). In any ordinary browser it goes straight to the
+     App Store. TikTok's own browser will not open the App Store, so there it shows how to open
+     this page in Safari, which then goes to the App Store. Add ?preview=tiktok or ?preview=direct
+     to see either version without leaving the page. -->
+<script>
+var STORE = 'https://apps.apple.com/app/id6792364161';
+var preview = (location.search.match(/[?&]preview=(\w+)/) || [])[1];
+var inTikTok = preview === 'tiktok' || (!preview && /musical_ly|BytedanceWebview|TikTok/i.test(navigator.userAgent));
+if (!inTikTok && !preview) location.replace(STORE);
+document.documentElement.className = inTikTok ? 'in-tiktok' : 'direct';
+</script>
+<style>
+.in-tiktok #direct, .direct #tiktok { display: none; }
+</style>
+</head>
+<body>
+<main class="wrap get-page">
+  <div id="tiktok">
+    <div class="point" aria-hidden="true">
+      <svg viewBox="0 0 84 84" fill="none" stroke="#2b2b2b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 76C16 46 38 22 72 12"/><path d="M48 8l24 4-8 23"/></svg>
+      <span class="mark">Tap here</span>
+    </div>
+    <img class="tile" src="../img/icon.png" alt="" width="96" height="96">
+    <h1>Get Lexio News in 2 taps</h1>
+    <p class="why">TikTok’s browser can’t open the App Store, but Safari can.</p>
+    <div class="card tap">
+      <span class="num">1</span>
+      <div>
+        <h2>Tap the <b>•••</b> in the top-right corner</h2>
+        <div class="fake bar" aria-hidden="true"><span>‹</span><span>✕</span><span class="name">Get Lexio News</span><span class="dots">•••</span></div>
+      </div>
+    </div>
+    <div class="card tap">
+      <span class="num">2</span>
+      <div>
+        <h2>Choose <b>Open in browser</b></h2>
+        <div class="fake menu" aria-hidden="true"><div>Copy link</div><div class="pick">Open in browser <span>👈</span></div><div>Refresh</div></div>
+      </div>
+    </div>
+    <p class="after">Safari opens the App Store for you.<br>Or type <strong>lexiolabs.io/get</strong> into Safari.</p>
+  </div>
+  <div id="direct">
+    <img class="tile" src="../img/icon.png" alt="" width="96" height="96">
+    <h1>Lexio News</h1>
+    <p class="why">Learn Spanish, French or Italian by reading. On the App Store for iPhone.</p>
+    <a class="badge" href="https://apps.apple.com/app/id6792364161"><img src="../img/app-store-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
+    <p class="after"><a href="../">See what the app does</a></p>
+  </div>
+</main>
+</body>
+</html>

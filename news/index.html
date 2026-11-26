@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lexio News: the news, at your level</title>
-<meta name="description" content="Read today’s news in Spanish, French or Italian, written precisely at your level. Tap any word to translate it and build your vocabulary as you go.">
-<meta property="og:title" content="Lexio News: the news, at your level">
-<meta property="og:description" content="Read today’s news in Spanish, French or Italian, written precisely at your level. Tap any word to translate it and build your vocabulary as you go.">
+<title>Lexio News: learn Spanish, French or Italian by reading</title>
+<meta name="description" content="Learn Spanish, French or Italian by reading short stories from today’s news, written precisely at your level. Tap any word to translate it and build your vocabulary as you go.">
+<meta property="og:title" content="Lexio News: learn Spanish, French or Italian by reading">
+<meta property="og:description" content="Learn Spanish, French or Italian by reading short stories from today’s news, written precisely at your level. Tap any word to translate it and build your vocabulary as you go.">
 <meta property="og:image" content="img/icon.png">
 <meta name="theme-color" content="#FFFBF2">
+<meta name="apple-itunes-app" content="app-id=6792364161">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,23 +18,24 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="wrap top">
+<header class="wrap top has-get">
   <a class="brand" href="./"><img src="img/icon.png" alt="" width="40" height="40">Lexio News</a>
   <nav class="nav" aria-label="Main">
     <a href="support.html">Support</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
   </nav>
+  <a class="badge small" data-store href="https://apps.apple.com/app/id6792364161"><img src="img/app-store-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
 </header>
 <main>
 <div class="wrap hero">
   <div>
-    <h1>Read today’s <span class="mark">news</span> in the language you’re <span class="mark blue">learning</span></h1>
-    <p class="lead">Lexio News rewrites each day’s stories <strong>precisely at your level</strong>. Tap any word to see what it means, and the app keeps track of the ones you know.</p>
+    <h1>Learn a <span class="mark">language</span> by <span class="mark blue">reading</span> the news</h1>
+    <p class="lead">Short stories in Spanish, French or Italian, rewritten every day <strong>precisely at your level</strong>. Tap any word to see what it means, and the app keeps track of the ones you know.</p>
     <div class="actions">
-      <a class="button" href="#how">See how it works</a>
+      <a class="badge" data-store href="https://apps.apple.com/app/id6792364161"><img src="img/app-store-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
+      <a class="more" href="#how">See how it works</a>
     </div>
-    <p class="soon">Coming soon to the App Store for iPhone.</p>
     <ul class="langs" aria-label="Languages you can learn">
       <li>Spanish</li><li>French</li><li>Italian</li>
     </ul>
@@ -68,7 +70,7 @@
   <div class="wrap">
     <h2 class="section-title">Good to know</h2>
     <div class="facts">
-      <div><h3>Subscription</h3><p>Lexio News is a paid app with monthly, three-month and yearly plans, bought through the App Store. You can cancel at any time in your App Store settings.</p></div>
+      <div><h3>Subscription</h3><p>Lexio News is a paid app with monthly and yearly plans, bought through the App Store. You can cancel at any time in your App Store settings.</p></div>
       <div><h3>No ads, no tracking</h3><p>The app has no advertising and doesn’t follow you around the internet. See the <a href="privacy.html">privacy policy</a> for the detail.</p></div>
     </div>
   </div>
@@ -77,9 +79,9 @@
 <section class="cta">
   <div class="wrap narrow">
     <div class="card">
-      <h2 class="section-title">The news, at your level</h2>
-      <p>Lexio News is on its way to the App Store. Questions in the meantime?</p>
-      <a class="button quiet" href="support.html">Get in touch</a>
+      <h2 class="section-title">Start reading in your new language</h2>
+      <p>Lexio News is on the App Store for iPhone. Questions first? <a href="support.html">Get in touch</a>.</p>
+      <a class="badge" data-store href="https://apps.apple.com/app/id6792364161"><img src="img/app-store-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
     </div>
   </div>
 </section>
@@ -95,5 +97,12 @@
     </nav>
   </div>
 </footer>
+<script>
+// TikTok's own browser will not open the App Store, so inside it the download buttons go to the
+// page that explains how to open Safari instead.
+if (/musical_ly|BytedanceWebview|TikTok/i.test(navigator.userAgent) || /[?&]preview=tiktok/.test(location.search)) {
+  document.querySelectorAll('a[data-store]').forEach(function (a) { a.href = 'get/' + location.search; });
+}
+</script>
 </body>
 </html>
