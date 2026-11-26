@@ -13,15 +13,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
-<!-- The link to share on TikTok (lexiolabs.io/get). In any ordinary browser it goes straight to the
-     App Store. TikTok's own browser will not open the App Store, so there it shows how to open
+<!-- The link to share on TikTok (lexiolabs.io/get). In any ordinary browser it goes to the App
+     Store as soon as the visit has been counted. TikTok's own browser will not open the App Store, so there it shows how to open
      this page in Safari, which then goes to the App Store. Add ?preview=tiktok or ?preview=direct
      to see either version without leaving the page. -->
 <script>
 var STORE = 'https://apps.apple.com/app/id6792364161';
 var preview = (location.search.match(/[?&]preview=(\w+)/) || [])[1];
 var inTikTok = preview === 'tiktok' || (!preview && /musical_ly|BytedanceWebview|TikTok/i.test(navigator.userAgent));
-if (!inTikTok && !preview) location.replace(STORE);
+var leaving = !inTikTok && !preview;
 document.documentElement.className = inTikTok ? 'in-tiktok' : 'direct';
 </script>
 <style>
@@ -29,7 +29,19 @@ document.documentElement.className = inTikTok ? 'in-tiktok' : 'direct';
 </style>
 <!-- Vercel Web Analytics: counts visits without cookies. Switched on in the Vercel dashboard. -->
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/insights/script.js" id="count"></script>
+<script>
+// Outside TikTok the page goes on to the App Store, but only after the visit has been counted. The
+// count is sent as the script above loads and still arrives after the page is left. If the script
+// is blocked or slow, go anyway.
+if (leaving) {
+  var go = function () { location.replace(STORE); };
+  var count = document.getElementById('count');
+  count.addEventListener('load', function () { setTimeout(go, 100); });
+  count.addEventListener('error', go);
+  setTimeout(go, 1500);
+}
+</script>
 </head>
 <body>
 <main class="wrap get-page">
